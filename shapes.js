@@ -16,9 +16,30 @@ svg.selectAll("rect") /* looks for "rect" element in SVG  and returns them in a 
 		.attr("y", function(d, i){return 300-(d*15);})
 		.attr("fill", "pink");
 
-svg.selectAll("circle")
+svg.selectAll("circle.first")
 		.data(dataArray)
 		.enter().append("circle")
+					.attr("class", "first")
 					.attr("cx", function(d,i){return 300+(100*i);})
 					.attr("cy", "100")
 					.attr("r", function(d,i){return d;});
+
+
+var newX = 600
+svg.selectAll("circle.second")
+		.data(dataArray)
+		.enter().append("circle")
+					.attr("class", "second")
+					.attr("cx", function(d,i){ newX+=(d*6) + (i*20); return newX;})
+					.attr("cy", "100")
+					.attr("r", function(d,i){return d*3;});
+
+var newX = 600
+svg.selectAll("ellipse")
+		.data(dataArray)
+		.enter().append("ellipse")
+					.attr("class", "second")
+					.attr("cx", function(d,i){ newX+=(d*6) + (i*20); return newX;})
+					.attr("cy", "200")
+					.attr("rx", function(d,i){return d*3;})
+					.attr("ry", "30");
