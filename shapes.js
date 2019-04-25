@@ -61,3 +61,57 @@ svg.selectAll("line")
 		// style >> css >> attr
 		// it's wiser to use CSS over style
 		// style or attr bulks the .js file since they're added at element level
+
+var textPosition = 500
+svg.append("text")
+		.attr("x", textPosition)
+		.attr("y", 150)
+		.attr("fill", "none")
+		.attr("stroke", "blue")
+		.attr("text-anchor", "start") // aligns horizontly
+		.attr("dominant-baseline", "middle") //aligns vertically
+		.attr("stroke-width", "2")
+		.attr("font-size", 30)
+		.text("start");
+
+svg.append("text")
+		.attr("x", textPosition)
+		.attr("y", 180)
+		.attr("fill", "blue")
+		.attr("stroke", "none")
+		.attr("text-anchor", "middle")
+		.attr("dominant-baseline", "middle")
+		.attr("font-size", 30)
+		.text("middle");
+
+svg.append("text")
+		.attr("x", textPosition)
+		.attr("y", 210)
+		.attr("stroke", "blue")
+		.attr("fill", "none")
+		.attr("text-anchor", "end")
+		.attr("dominant-baseline", "middle")
+		.attr("font-size", 30)
+		.text("end");
+svg.append("line")
+		.attr("x1", textPosition)
+		.attr("y1", "150")
+		.attr("x2", textPosition)
+		.attr("y2", "210");
+
+
+//Adding 3 texts with one set of svg element, using tspan
+
+var textArray = ["start", "middle", "end"];
+
+svg.append("text").selectAll("tspan")
+		.data(textArray)
+		.enter().append("tspan")
+		.attr("x", textPosition - 100)
+		.attr("y", function(d,i){return(150 + i*30) ;})
+		.attr("stroke", "blue")
+		.attr("fill", "none")
+		.attr("text-anchor", "end")
+		.attr("dominant-baseline", "middle")
+		.attr("font-size", 30)
+		.text(function(d){return d;});
