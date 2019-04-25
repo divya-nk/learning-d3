@@ -25,7 +25,7 @@ svg.selectAll("circle.first")
 					.attr("r", function(d,i){return d;});
 
 
-var newX = 600
+var newX = 600;
 svg.selectAll("circle.second")
 		.data(dataArray)
 		.enter().append("circle")
@@ -34,7 +34,7 @@ svg.selectAll("circle.second")
 					.attr("cy", "100")
 					.attr("r", function(d,i){return d*3;});
 
-var newX = 600
+var newX = 600;
 svg.selectAll("ellipse")
 		.data(dataArray)
 		.enter().append("ellipse")
@@ -43,3 +43,21 @@ svg.selectAll("ellipse")
 					.attr("cy", "200")
 					.attr("rx", function(d,i){return d*3;})
 					.attr("ry", "30");
+
+var newX = 700;
+svg.selectAll("line")
+		.data(dataArray)
+		.enter().append("line")
+					.attr("x1", newX)
+					//.attr("stroke", "blue")
+					//.style("stroke", "green")
+					.attr("stroke-width", "2")
+					.attr("y1", function(d,i){return 80+(i*20);})
+					.attr("x2", function(d){return newX+d*15;})
+					.attr("y2", function(d,i){return 80+(i*20);});
+
+
+	// Order of precedence:
+		// style >> css >> attr
+		// it's wiser to use CSS over style
+		// style or attr bulks the .js file since they're added at element level
