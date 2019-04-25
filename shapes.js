@@ -14,4 +14,11 @@ svg.selectAll("rect") /* looks for "rect" element in SVG  and returns them in a 
 		.attr("x", function(d, i){return 60*i;}) /* d and i are convention, denoting datapoint and index - in this case, d: 5, 11, 19 and i: 0,1,2 */
 		/*.attr("y", "100")*/
 		.attr("y", function(d, i){return 300-(d*15);})
-		.attr("fill", "pink")
+		.attr("fill", "pink");
+
+svg.selectAll("circle")
+		.data(dataArray)
+		.enter().append("circle")
+					.attr("cx", function(d,i){return 300+(100*i);})
+					.attr("cy", "100")
+					.attr("r", function(d,i){return d;});
