@@ -1,0 +1,5 @@
+https://github.com/d3/d3/blob/master/API.md -- can find all elements of d3
+
+
+https://bl.ocks.org/ -- examples of d3 visualization
+
