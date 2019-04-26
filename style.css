@@ -5,3 +5,13 @@ html, body {
 line {
 	stroke: red;
 }
+
+g.group0 path,
+g.group0 circle {
+	stroke: red;
+}
+
+g.group4 path,
+g.group4 circle{
+	stroke: pink
+}
