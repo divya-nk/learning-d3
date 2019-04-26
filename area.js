@@ -4,11 +4,25 @@ var dataYears = ['2000','2001','2002','2003','2004','2005','2006','2007','2008',
 var height = 200;
 var width = 500;
 
+
+var y = d3.scaleLinear()
+				.domain([0, 180])  	//input - min and max of data
+				.range([height, 0]);	//output - pixels: since webpages read charts from top to bottom and we read vice-versa, 
+										// we map range to domain inversely (data_min->range_max, data_max->range_min)
+
+var area = d3.area()
+				.x(function(d,i){return i*20; })
+				.y0(height) 
+				.y1(function(d){return y(d);});
+
+
+/*
+// before axes and scales lesson:
 var area = d3.area()
 				.x(function(d,i){return i*20; })
 				.y0(height) //sets the location of upper line -- generally flat, runs along the x-axis
 				.y1(function(d){return height-d;}); // sets location of lower line
 
-
+*/
 var svg = d3.select("body").append("svg").attr("height", "100%").attr("width", "100%");
 svg.append("path").attr("d", area(dataArray))
